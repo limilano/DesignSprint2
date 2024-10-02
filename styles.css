@@ -1,0 +1,95 @@
+/* css */
+
+* {
+    font-family: 'Ubuntu', sans-serif;;
+  }
+  
+  .container-fluid {
+    width: 100%;
+     margin: 0 !important;
+     padding: 0 !important;
+  }
+  
+  .col {
+    padding: 2% 0;
+  }
+  
+  .row {
+    width: 100%;
+  }
+  
+  .gray {
+    color: #61666C;
+    padding: 0 2%;
+  }
+  
+  .center {
+    text-align: center;
+    padding: 2.5% 0;
+    
+  }
+  
+  .header {
+    background-color: #2e70cd;
+    text-align: center;
+    color: white;
+    padding: 1% 0;
+  }
+  
+  h2 {
+    font-size: 3vw;
+  }
+  
+  p, .textFixer{
+    font-size: 1.3vw;
+    margin:0;
+    padding: 1% 0;
+  }
+  
+  h4 {
+    font-size: 1.6vw;
+  }
+  
+  .mainBody {
+    padding: 2% 15%;
+    font-size: 17px;
+  }
+  
+  .comment {
+    border: solid 1px #E7ECF0;
+  }
+  
+  .pad {
+    padding: 2% 3%;
+  }
+
+  
+  video {
+    display: block;
+    margin: auto;
+  }
+  
+  img {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 50%; */
+  }
+  
+  
+  /* Style the button that is used to open and close the collapsible content */
+  .collapsible {
+    border: none;
+    text-align: center;
+    outline: none;
+  }
+  
+  
+  /* Style the collapsible content. Note: hidden by default */
+  .content {
+    padding: 2% 0;
+    /* display: none; */
+    overflow: hidden;
+    text-align: left;
+  }
+  

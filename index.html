@@ -1,229 +1,46 @@
-<!-- Lillian Milano and Natalie Bivens -->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://kit.fontawesome.com/cd0b0889e9.js" crossorigin="anonymous"></script>
+	
+
+	<title>Home</title>
+
+
+</head>
 
 <body>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-  
-    <!-- Google fonts -->
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<div class="container-fluid">
 
-    <link
-    href="https://assets.website-files.com/5c6e6f46bf98b2013cf621c5/css/portfolio-starter-template.webflow.49f1fedc7.css"
-    rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-<script
-    type="text/javascript">WebFont.load({ google: { families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });</script>
+		<div class="header">
+			<h2>Design Sprint 2</h2>
+		</div>
 
-<style>
-   
-    .justify {
-        text-align: justify;
-    }
-
-    .bar {
-        fill: #8dba77;
-      }
- 
-    .pad {
-      padding: 3% 0;
-    }
-    svg {
-      display: block;
-      margin: auto;
-      background-color: #ffffff;
-      box-shadow: 2px 2px #f4f4f4;
-    }
-    body {
-      background-color: #fcfcfc;
-    }
-
-    .center {
-      text-align: center;
-    }
-
-    h3 {
-      font-size: 25;
-    }
-    h2 {
-      padding: 2% 0;
-    }
-    div.buttons {
-          display: table;
-          width: 100%;
-          table-layout: fixed;
-        }
-        div.buttons span {
-          display: table-cell;
-          text-align: left;
-        }
-
-
-        .button {
-          text-align: center;
-          margin: auto;
-          display: grid;
-        }
-
-    </style>
-
-
-    <div class="section">
-    <div class="container">
-        <div class="pad">
-            
-            
-            <svg id="chart"></svg> <br>
-
-      
-            </div>
-        </div>
-    </div>
-</div>
+		<div class="row justify-content-center">
+			<div class="col col-6 align-self-center">
+                <h4 class = "center"><a href="analytical.html">Analytical Evaluation</a></h4>
+                <h4 class = "center"><a href="persuasive.html">Persuasive Evaluation</a></h4>
+			</div>
+		</div>
 
 
 
-    <script>
-      //read in the data
 
-      var margin = {top: 20, right: 20, bottom: 50, left: 70},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
-  
-  
-  
-      var svg = d3.select("#chart")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g") //group
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  
-      data = d3.csv("MER_T10_02A.csv").then(data => {
-        data.forEach(d => {
-            d.Value = +d.Value;
-            
-        });
-
-        energyData = {}; //map
-
-        const id = d => d.MSN;
-
-        data.forEach(d => {
-          const curID = id(d);
-          if(!energyData.hasOwnProperty(curID)) { //if id not in our map
-            energyData[curID] = {
-              date: [],
-              value: [],
-              label: curID
-            };
-          } 
-
-          const year = d.YYYYMM;
-
-          if (!energyData[curID].date.includes("2002") 
-                && year.substr(0,4) === "2002") {
-            energyData[curID].date.push(d.YYYYMM.substr(0,4));
-            energyData[curID].value.push(d.Value);
-          }
+	</div>
 
 
-          if (!energyData[curID].date.includes("2022") 
-                && year.substr(0,4) === "2022") {
-            energyData[curID].date.push(d.YYYYMM.substr(0,4));
-            energyData[curID].value.push(d.Value);
-          }
-        });
-
-        energyData = d3.values(energyData); //convert to array
-
-        energyData.forEach(d => {
-            if(!isNaN(d.value[0])) {
-              d.diff = Math.round(100*(d.value[1] - d.value[0]))/100;
-            } else {
-                d.diff = d.value[1];
-            }
-        });
-
-        const labels = ["Geothermal", "Solar", "Wood", -1, "Hydroelectric", "Geothermal","Solar","Wind",
-        "Wood","Waste","Fuel Ethanol","Biomass",-1];
-
-        var count = 0;
-        energyData.forEach(d => {
-            d.label = labels[count];
-            count++;
-        });
-
-        energyData = energyData.slice(0, 3).concat(energyData.slice(4));
-        energyData.pop();
-
-        
-
-        //axes
-        x = d3.scaleBand()
-          .rangeRound([0, width])
-          .padding(.1)
-          .domain(energyData.map(d => d.label));
 
 
-        y = d3.scaleLinear()
-        .rangeRound([height, 0])
-        .domain([0, d3.max(energyData, d => d.diff)]);
+</body>
 
-        purpleColorScale = d3.scaleLinear()
-          .domain([0, d3.max(energyData, d => d.diff)])
-          .range(["#d098f5", "#4d004b"]);
+</html>
 
-        yellowColorScale = d3.scaleLinear()
-          .domain([0, d3.max(energyData, d => d.diff)])
-          .range(["#e8a15f","#9c4d22"]);
+<!-- random line -->
 
-
-          const barLabels = svg.selectAll(".text") //group
-          .data(energyData) //bind data
-          .enter()
-                .append("text")
-                  .text(d => d.diff + "")
-                  .attr("font-family" , "sans-serif")
-                  .attr("font-size" , "14px")
-                  .attr("fill" , "black")
-                  .attr("text-anchor", "right")
-                  .attr("x", d => x(d.label) + 30)
-                  .attr("y", d => y(d.diff) - 10);
-
-        const entries = svg.selectAll("g") //group
-          .data(energyData) //bind data
-          .enter() //every element in data will have a g at the end
-            .append("g")
-              .append("rect")
-                .attr("class","bar")
-                .attr("x", d => x(d.label))
-                .attr("width", x.bandwidth)
-                .attr("y", d => y(d.diff))
-                .attr("height", d => height - y(d.diff));
-            
-        
-                
-                    
-
-        svg.append("g")
-          .call(d3.axisLeft(y));
-
-        svg.append("g")
-          .attr("transform","translate(0," + height + ")")
-          .call(d3.axisBottom(x));
-
-        svg.append("text")
-          .attr("transform", "translate(" + (width/2) + " ," + (height+35) + ")")
-          .style("text-anchor", "middle")
-          .text("Source of Renewable Energy");
-
-        svg.append("text")
-          .attr("transform", "rotate(-90)")
-          .attr("x", -(height/2))
-          .attr("y", -35)
-          .style("text-anchor", "middle")
-          .text("Trillion BTU");
-
-        });
-      </script>
-  
-  </body>
