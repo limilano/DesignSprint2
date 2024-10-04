@@ -38,7 +38,7 @@
 }
 
 h2 {
-  font-size: 3vw;
+  font-size: 2vw;
 }
 
 p,
@@ -53,6 +53,8 @@ h4 {
 }
 
 .mainBody {
+  display: block;
+  margin:auto;
   padding: 2% 15%;
   font-size: 17px;
 }
@@ -102,8 +104,11 @@ img {
   text-align: justify;
 }
 
-.bar {
-  fill: #8dba77;
+.pinkBar {
+  fill: rgb(255, 165, 222);
+}
+.blueBar {
+  fill: rgb(132, 185, 248);
 }
 
 .pad {
@@ -114,5 +119,16 @@ display: block;
 margin: auto;
 background-color: #ffffff;
 box-shadow: 2px 2px #f4f4f4;
+}
+
+.tooltip {
+  width: auto;
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.axis-x text {
+  display: none;
 }
 

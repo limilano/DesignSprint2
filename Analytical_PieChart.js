@@ -41,8 +41,8 @@ function updatePieChart(data) {
     .enter()
     .append('path')
     .merge(u)
-    .transition()
-    .duration(1000)
+    //.transition()
+    //.duration(1000)
     .attr('d', d3.arc()
       .innerRadius(0)
       .outerRadius(radius)
@@ -60,4 +60,4 @@ function updatePieChart(data) {
 }
 
 // Initialize the plot with the first dataset
-update(data1)
+updatePieChart(data1)

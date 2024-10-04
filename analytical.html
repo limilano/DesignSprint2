@@ -27,95 +27,36 @@
         <h2>Analytical Evaluation</h2>
       </div>
 
-      <div class="d-flex justify-content-center table-responsive-lg"></div>
       <table class="table">
         <tr>
           <td class="text-center" scope="col"><a href="index.html">Home</a></td>
-          <td class="text-center" scope="col"><a href="persuasive.html">Persuasive</a></td>
+          <td class="text-center" scope="col"><a
+              href="persuasive.html">Persuasive</a></td>
         </tr>
       </table>
+
+      <!-- <div class="paragraph justify mainBody">
+        <table class="table">
+          <tr>
+            <td class="text-center" scope="col"><button onclick="updatePieChart(data1)">Asians</button></td>
+            <td class="text-center" scope="col"><button onclick="updatePieChart(data2)">Minorities</button></td>
+            <td class="text-center" scope="col"><button onclick="updatePieChart(data2)">Whites</button></td>
+          </tr>
+        </table>
+        <div id="PieChart"></div>
+      </div> -->
+      <!-- <div id="tooltip" style="position: absolute; opacity: 0; background: rgb(233, 233, 233); padding: 5px; border-radius: 3px; pointer-events: none;"></div> -->
+  
+      <div id="bcToolTip"><svg id="MFbarchart"></svg> </div><br>
+      
     </div>
-    <div class="paragraph justify">
-      <br>
-      <!DOCTYPE html>
-<meta charset="utf-8">
-
-<!-- Load d3.js -->
-
-
-
-<button onclick="update(data1)">Data 1</button>
-<button onclick="update(data2)">Data 2</button>
-<!-- <select onchange="update(this.value)">
-        <option value="data1" >1</option>
-        <option value="data2" >2</option>
-      </select> -->
-
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
-
+  
     </div>
-    <script>
-
-// set the dimensions and margins of the graph
-const width = 450,
-    height = 450,
-    margin = 40;
-
-// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-const radius = Math.min(width, height) / 2 - margin;
-
-// append the svg object to the div called 'my_dataviz'
-const svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", `translate(${width/2}, ${height/2})`);
-
-// create 2 data_set
-const data1 = {a: 9, b: 20, c:30, d:8, e:12}
-const data2 = {a: 6, b: 16, c:20, d:14, e:19, f:12}
-
-// set the color scale
-const color = d3.scaleOrdinal()
-  .domain(["a", "b", "c", "d", "e", "f"])
-  .range(d3.schemeDark2);
-
-// A function that create / update the plot for a given variable:
-function update(data) {
-
-  // Compute the position of each group on the pie:
-  const pie = d3.pie()
-    .value(function(d) {return d[1]; })
-    .sort(function(a, b) { return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
-  const data_ready = pie(Object.entries(data))
-
-  // map to data
-  const u = svg.selectAll("path")
-    .data(data_ready)
-
-  // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-  u
-    .join('path')
-    .transition()
-    .duration(1000)
-    .attr('d', d3.arc()
-      .innerRadius(0)
-      .outerRadius(radius)
-    )
-    .attr('fill', function(d){ return(color(d.data[0])) })
-    .attr("stroke", "white")
-    .style("stroke-width", "2px")
-    .style("opacity", 1)
+    
 
 
-}
+  <!-- <script src="Analytical_PieChart.js"></script> -->
+  <script src="Analytical_MFbarchart.js"></script>
 
-// Initialize the plot with the first dataset
-update(data1)
-</script>
 
-     
-
-  </body>
+</body>
