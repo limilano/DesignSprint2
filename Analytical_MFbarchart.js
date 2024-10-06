@@ -58,26 +58,26 @@ data = d3.csv("graduates.csv").then(data => {
     .domain([0, d3.max(majors, d => d.diff)]);
 
 
-    var Tooltip = d3.select("#bcToolTip")
+  var Tooltip = d3.select("#bcToolTip")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
 
   // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function(d) {
+  var mouseover = function (d) {
     Tooltip
       .style("opacity", 1)
     d3.select(this)
       .style("stroke", "black")
       .style("opacity", 1)
   }
-  var mousemove = function(d) {
+  var mousemove = function (d) {
     Tooltip
-      .html("Major: " + d.label + `<br>` + " Females: " + d.females + `<br>`+ " Males: " + d.males)
-      .style("left", (d3.mouse(this)[0]+70) + "px")
+      .html("Major: " + d.label + `<br>` + " Females: " + d.females + `<br>` + " Males: " + d.males)
+      .style("left", (d3.mouse(this)[0] + 70) + "px")
       .style("top", (d3.mouse(this)[1]) + "px")
   }
-  var mouseleave = function(d) {
+  var mouseleave = function (d) {
     Tooltip
       .style("opacity", 0)
     d3.select(this)
@@ -113,7 +113,7 @@ data = d3.csv("graduates.csv").then(data => {
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
-    
+
 
 
 

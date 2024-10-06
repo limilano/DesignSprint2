@@ -34,29 +34,80 @@
               href="persuasive.html">Persuasive</a></td>
         </tr>
       </table>
-
-      <!-- <div class="paragraph justify mainBody">
-        <table class="table">
-          <tr>
-            <td class="text-center" scope="col"><button onclick="updatePieChart(data1)">Asians</button></td>
-            <td class="text-center" scope="col"><button onclick="updatePieChart(data2)">Minorities</button></td>
-            <td class="text-center" scope="col"><button onclick="updatePieChart(data2)">Whites</button></td>
-          </tr>
-        </table>
-        <div id="PieChart"></div>
-      </div> -->
-      <!-- <div id="tooltip" style="position: absolute; opacity: 0; background: rgb(233, 233, 233); padding: 5px; border-radius: 3px; pointer-events: none;"></div> -->
-  
+      <h3 style ="display: block;
+      margin:auto;
+      padding: 2% 15%;">Amount of Females vs Males by Major in 2010</h3>
       <div id="bcToolTip"><svg id="MFbarchart"></svg> </div><br>
-      
+      <div class="mainBody">
+        <h3>Ethnicities by Major in 2010</h3>
+        <select onchange="updatePieChart(this.value)">
+          <option value="Agricultural Economics">Agricultural Economics</option>
+          <option value="Animal Sciences">Animal Sciences</option>
+          <option value="Anthropology and Archeology">Anthropology and
+            Archeology</option>
+          <option value="Area and Ethnic Studies">Area and Ethnic
+            Studies</option>
+          <option value="Atmospheric Sciences and Meteorology">Atmospheric
+            Sciences and Meteorology</option>
+          <option value="Biochemistry and Biophysics">Biochemistry and
+            Biophysics</option>
+          <option value="Biological Sciences">Biological Sciences</option>
+          <option value="Botany">Botany</option>
+          <option value="Chemical Engineering">Chemical Engineering</option>
+          <option value="Chemistry">Chemistry</option>
+          <option value="Civil Engineering">Civil Engineering</option>
+          <option value="Computer Science and Math">Computer Science and
+            Math</option>
+          <option value="Criminology">Criminology</option>
+          <option value="Earth Sciences">Earth Sciences</option>
+          <option value="Economics">Economics</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Environmental Science Studies">Environmental Science
+            Studies</option>
+          <option value="Food Sciences and Technology">Food Sciences and
+            Technology</option>
+          <option value="Forestry Services">Forestry Services</option>
+          <option value="Genetics, Animal and Plant">Genetics, Animal and
+            Plant</option>
+          <option value="Geography">Geography</option>
+          <option value="Geology">Geology</option>
+          <option value="History of Science">History of Science</option>
+          <option value="Information Services and Systems">Information Services
+            and Systems</option>
+          <option value="International Relations">International
+            Relations</option>
+          <option value="Linguistics">Linguistics</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Nutritional Science">Nutritional Science</option>
+          <option value="OTHER Agricultural Sciences">OTHER Agricultural
+            Sciences</option>
+          <option value="OTHER Geological Sciences">OTHER Geological
+            Sciences</option>
+          <option value="OTHER Physical and Related Sciences">OTHER Physical and
+            Related Sciences</option>
+          <option value="Pharmacology, Human and Animal">Pharmacology, Human and
+            Animal</option>
+          <option value="Philosophy of Science">Philosophy of Science</option>
+          <option value="Physics and Astronomy">Physics and Astronomy</option>
+          <option value="Physiology, Human and Animal">Physiology, Human and
+            Animal</option>
+          <option value="Plant Sciences">Plant Sciences</option>
+          <option value="Political Science and Government">Political Science and
+            Government</option>
+          <option value="Psychology">Psychology</option>
+          <option value="Public Policy Studies">Public Policy Studies</option>
+          <option value="Sociology">Sociology</option>
+          <option value="Statistics">Statistics</option>
+          <option value="Zoology, General">Zoology, General</option>
+
+        </select>
+
+        <div id="PieToolTip" style="position: absolute;width: auto;"></div>
+        <div id="PieChart"></div>
+      </div>
     </div>
-  
-    </div>
-    
 
+    <script src="Analytical_PieChart.js"></script>
+    <script src="Analytical_MFbarchart.js"></script>
 
-  <!-- <script src="Analytical_PieChart.js"></script> -->
-  <script src="Analytical_MFbarchart.js"></script>
-
-
-</body>
+  </body>
