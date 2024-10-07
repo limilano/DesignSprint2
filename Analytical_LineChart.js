@@ -1,53 +1,72 @@
-// set the dimensions and marginLines of the graph
-const marginLine = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 1000 - marginLine.left - marginLine.right,
-    height = 500 - marginLine.top - marginLine.bottom;
+var svgTest = d3.select("#LineGraph").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// append the svg object to the body of the page
-const svgLine = d3.select("#LineGraph")
-  .append("svg")
-    .attr("width", width + marginLine.left + marginLine.right)
-    .attr("height", height + marginLine.top + marginLine.bottom)
-  .append("g")
-    .attr("transform", `translate(${marginLine.left},${marginLine.top})`);
-
-//Read the data
-d3.csv("graduates.csv").then( function(data) {
-
-  // group the data: I want to draw one line per group
-  const sumstat = d3.group(data, d => d.Major); // nest function allows to group the calculation per level of a factor
-
-  // Add X axis --> it is a date format
-  const x = d3.scaleLinear()
-    .domain(d3.extent(data, function(d) { return d.Year; }))
-    .range([ 0, width ]);
-    svgLine.append("g")
-    .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(x).ticks(5));
-
-  // Add Y axis
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return +d.Mean; })])
-    .range([ height, 0 ]);
-    svgLine.append("g")
-    .call(d3.axisLeft(y));
-
-  // color palette
-  const color = d3.scaleOrdinal()
-    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
-
-  // Draw the line
-  svgLine.selectAll(".line")
-      .data(sumstat)
-      .join("path")
-        .attr("fill", "none")
-        .attr("stroke", function(d){ return color(d[0]) })
-        .attr("stroke-width", 1.5)
-        .attr("d", function(d){
-          return d3.line()
-            .x(function(d) { return x(d.Year); })
-            .y(function(d) { return y(+d.Mean); })
-            (d[1])
-        })
-
-})
+function updateLineGraph(lookformajor) {
+    // Read the CSV file
+    svgTest = d3.select("#LineGraph").select("svg").remove();
+    svgTest = d3.select("#LineGraph").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    d3.csv("graduates.csv").then(data => {
+      // Convert relevant fields to numbers
+      data.forEach(d => {
+        d.Mean = +d.Mean;
+      });
+  
+      // Filter data for the specific major
+      let majorLine = [];
+      let max = 0;
+  
+      data.forEach(d => {
+        if (d.Major === lookformajor) {
+          majorLine.push({ year: +d.Year, value: +d.Mean });
+          if (d.Mean > max) {
+            max = d.Mean;
+          }
+        }
+      });
+  
+      // Define scales based on filtered data
+      var xScale = d3.scaleLinear()
+        .domain(d3.extent(majorLine, d => d.year)) // Calculate domain from data
+        .range([0, width]);
+  
+      var yScale = d3.scaleLinear()
+        .domain([0, max]) // Input
+        .range([height, 0]); // Output
+  
+      // Add the SVG to the page
+      
+  
+      // Append X axis
+      svgTest.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(xScale));
+  
+      // Append Y axis
+      svgTest.append("g")
+        .attr("class", "y axis")
+        .call(d3.axisLeft(yScale));
+  
+      // Define the line generator
+      var line = d3.line()
+        .x(function(d) { return xScale(d.year); }) // Use year for x values
+        .y(function(d) { return yScale(d.value); }); // Use mean for y values
+  
+      // Bind data and append the path for the line
+      svgTest.append("path")
+        .datum(majorLine) // Binds data to the line
+        .attr("class", "line") // Assign a class for styling
+        .attr("d", line); // Calls the line generator
+    });
+  }
+  
+  // Call the function to render the line graph
+  updateLineGraph("Agricultural Economics");
+  
