@@ -1,15 +1,15 @@
-// set the dimensions and margins of the graph
-const margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 1000 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+// set the dimensions and marginLines of the graph
+const marginLine = {top: 10, right: 30, bottom: 30, left: 60},
+    width = 1000 - marginLine.left - marginLine.right,
+    height = 500 - marginLine.top - marginLine.bottom;
 
 // append the svg object to the body of the page
 const svgLine = d3.select("#LineGraph")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + marginLine.left + marginLine.right)
+    .attr("height", height + marginLine.top + marginLine.bottom)
   .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${marginLine.left},${marginLine.top})`);
 
 //Read the data
 d3.csv("graduates.csv").then( function(data) {
