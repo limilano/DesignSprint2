@@ -1,6 +1,6 @@
 var svgTest = d3.select("#LineGraph").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", 1000 + margin.left + margin.right)
+        .attr("height", 500 + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -8,8 +8,8 @@ function updateLineGraph(lookformajor) {
     // Read the CSV file
     svgTest = d3.select("#LineGraph").select("svg").remove();
     svgTest = d3.select("#LineGraph").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("width", 1000 + margin.left + margin.right)
+        .attr("height", 500 + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     d3.csv("graduates.csv").then(data => {
@@ -34,11 +34,11 @@ function updateLineGraph(lookformajor) {
       // Define scales based on filtered data
       var xScale = d3.scaleLinear()
         .domain(d3.extent(majorLine, d => d.year)) // Calculate domain from data
-        .range([0, width]);
+        .range([0, 1000]);
   
       var yScale = d3.scaleLinear()
         .domain([0, max]) // Input
-        .range([height, 0]); // Output
+        .range([500, 0]); // Output
   
       // Add the SVG to the page
       
@@ -46,7 +46,7 @@ function updateLineGraph(lookformajor) {
       // Append X axis
       svgTest.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0," + 500 + ")")
         .call(d3.axisBottom(xScale));
   
       // Append Y axis
