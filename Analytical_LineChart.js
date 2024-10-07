@@ -64,6 +64,18 @@ function updateLineGraph(lookformajor) {
         .datum(majorLine) // Binds data to the line
         .attr("class", "line") // Assign a class for styling
         .attr("d", line); // Calls the line generator
+
+        svgTest.append("text")
+    .attr("transform", "translate(" + (1000 / 2) + " ," + (500 + 35) + ")")
+    .style("text-anchor", "middle")
+    .text("Year");
+
+    svgTest.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -(500 / 2))
+    .attr("y", -45)
+    .style("text-anchor", "middle")
+    .text("Mean Salary");
     });
   }
   
