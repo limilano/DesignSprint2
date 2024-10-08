@@ -60,3 +60,7 @@ h2 {
     height: 50%; /* Half height of the right half */
 }
 
+.pad {
+    padding: 3%;
+}
+
