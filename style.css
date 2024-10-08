@@ -1,3 +1,68 @@
+/* General styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Enable scrolling for the entire body */
+}
+
+/* Center the heading */
+h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Container styles for overall layout */
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 90vh; /* Full height minus the header */
+    min-width: 1200px; /* Set a minimum width to prevent collapsing */
+    width: 100%; /* Make the container take full width */
+    justify-content: space-between;
+    overflow: visible; /* Allow overflowing elements within the container */
+}
+
+/* Treemap container should take the left half of the screen */
+.half-screen {
+    width: 50%; /* Left half of the screen */
+    height: 100%;
+    overflow: visible; /* Allow overflow if treemap content is larger */
+}
+
+/* Right half container for bar chart and line chart */
+.right-half {
+    width: 50%; /* Right half of the screen */
+    display: flex;
+    flex-direction: column;
+    overflow: visible; /* Allow overflow in right-half container */
+    padding-left: 5%;
+}
+
+/* Bar chart and line chart are each 50% of the right half */
+.quarter-screen {
+    width: 100%; /* Full width of the right half */
+    height: 50%; /* Half height of the right half */
+    overflow: visible; /* No scroll within individual charts */
+    
+}
+
+/* Ensure treemap and chart areas do not overlap */
+#treemap, #chart-area, #line-chart-area {
+    box-sizing: border-box;
+}
+
+/* Ensure the treemap, chart, and line chart have spacing and don't overlap */
+ #line-chart-area {
+    padding-top: 3%; /* Add some padding around each container */
+}
+
+/* Change cursor to grab when hovering over treemap rectangles */
+.node rect:hover {
+    cursor: grab;
+}
+
+/* Node styling */
 .node {
     border: solid 1px #ffffff;
     font: 10px sans-serif;
@@ -7,60 +72,31 @@
     text-indent: 2px;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-}
-#treemap, #chart-area {
-    flex: 1;
+/* Responsive design: Adjust layout on smaller screens */
+@media (max-width: 1200px) {
+    /* Make the entire container scrollable */
+    .container {
+        flex-direction: row;
+        width: 1200px; /* Set a fixed width to maintain layout */
+        overflow-x: scroll; /* Enable horizontal scrolling */
+    }
+
+    /* SVG containers maintain their fixed positions */
+    .half-screen, .right-half {
+        width: 70%; /* Keep each half at 50% of the fixed container width */
+        overflow: visible;
+    }
+
+    /* Allow the entire body to scroll */
+    body {
+        overflow-x: auto; /* Allow horizontal scrolling */
+        overflow-y: auto; /* Allow vertical scrolling if necessary */
+    }
 }
 
-/* Change cursor to grab when hovering over treemap rectangles */
-.node rect:hover {
-    cursor: grab;
-}
 
-/* General styles for the body */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
-h2 {
-    text-align: center;
-    margin: 20px 0;
-}
 
-/* Container styles */
-.container {
-    display: flex;
-    flex-direction: row;
-    height: 90vh; /* Full height minus the header */
-    width: 100vw;
-    justify-content: space-between;
-}
 
-/* Treemap should take the left half of the screen */
-.half-screen {
-    width: 50%; /* Left half of the screen */
-    height: 100%;
-}
 
-/* Right half container for bar chart and line chart */
-.right-half {
-    width: 50%; /* Right half of the screen */
-    display: flex;
-    flex-direction: column;
-}
-
-/* Bar chart and line chart are each 50% of the right half */
-.quarter-screen {
-    width: 100%; /* Full width of the right half */
-    height: 50%; /* Half height of the right half */
-}
-
-.pad {
-    padding: 3%;
-}
 
