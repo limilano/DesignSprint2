@@ -133,11 +133,18 @@ box-shadow: 2px 2px #f4f4f4;
 }
 
 
-.line {
+.line1 {
   fill: none;
-  stroke: #ffab00;
+  stroke: #e6ab02;
   stroke-width: 3;
 }
+
+.line2 {
+  fill: none;
+  stroke: #e7298a;
+  stroke-width: 3;
+}
+
 
 .overlay {
 fill: none;

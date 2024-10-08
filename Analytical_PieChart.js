@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var width = 450
+var width = 700
     height = 450
     margin = 40
 
@@ -48,7 +48,7 @@ var color = d3.scaleOrdinal()
         .style("opacity", 0)
       d3.select(this)
         .style("stroke", "none")
-        .style("opacity", 0.8)
+        .style("opacity", 1)
     }
 
 // A function that create / update the plot for a given variable:
@@ -106,15 +106,28 @@ function updatePieChart(lookformajor) {
       .outerRadius(radius)
     )
     .attr('fill', function(d){ return(color(d.data.key)) })
-    .attr("stroke", "white")
-    .style("stroke-width", "2px")
+    // .attr("stroke", "white")
+    // .style("stroke-width", "2px")
     .style("opacity", 1)
+
+    var total = majorsPie[lookformajor].asians + majorsPie[lookformajor].minorities + majorsPie[lookformajor].whites; 
+    pieChart.selectAll("circle").remove()
+    pieChart.selectAll("text").remove()
+    pieChart.append("circle").attr("cx",200).attr("cy",130).attr("r", 6).style("fill", "#e7298a" )
+    pieChart.append("circle").attr("cx",200).attr("cy",160).attr("r", 6).style("fill", "#66a61e")
+    pieChart.append("circle").attr("cx",200).attr("cy",190).attr("r", 6).style("fill", "#e6ab02")
+    pieChart.append("text").attr("x", 220).attr("y", 130).text("Asians: " + ((majorsPie[lookformajor].asians/total)*100).toFixed(2) + "%").style("font-size", "15px").attr("alignment-baseline","middle")
+    pieChart.append("text").attr("x", 220).attr("y", 160).text("Minorities: " + ((majorsPie[lookformajor].minorities/total)*100).toFixed(2) + "%").style("font-size", "15px").attr("alignment-baseline","middle")
+    pieChart.append("text").attr("x", 220).attr("y", 190).text("Whites: " + ((majorsPie[lookformajor].whites/total)*100).toFixed(2) + "%").style("font-size", "15px").attr("alignment-baseline","middle")
+    
     
 
   // remove the group that is not present anymore
   u
     .exit()
     .remove()
+
+   
 
   });
 
