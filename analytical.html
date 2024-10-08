@@ -106,11 +106,9 @@
         <div id="PieChart"></div>
         <br>
 
-        
-
         <h3>Mean Salary by Major from 1993-2015</h3>
         <p>*Data may for unavailable before 2003 for some majors</p>
-        <select onchange="updateLine1(this.value)">
+        <select onchange="updateMajorLine1(this.value)">
           <option value="Agricultural Economics">Agricultural Economics</option>
           <option value="Animal Sciences">Animal Sciences</option>
           <option value="Anthropology and Archeology">Anthropology and
@@ -172,7 +170,7 @@
 
         </select>
 
-        <select onchange="updateLine2(this.value)">
+        <select onchange="updateMajorLine2(this.value)">
           <option value="Agricultural Economics">Agricultural Economics</option>
           <option value="Animal Sciences">Animal Sciences</option>
           <option value="Anthropology and Archeology">Anthropology and
@@ -241,7 +239,6 @@
     <script src="Analytical_PieChart.js"></script>
     <script src="Analytical_MFbarchart.js"></script>
     <script src="Analytical_LineChart.js"></script>
-    
 
 
   </body>

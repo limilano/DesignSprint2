@@ -9,7 +9,7 @@ let majorLine2 = []
 let max1 = 0
 let max2 = 0
 
-function updateLine1(lookformajor) {
+function updateMajorLine1(lookformajor) {
   majorLine1 = []
   max1 = 0;
 
@@ -31,7 +31,7 @@ function updateLine1(lookformajor) {
   updateLineGraph();
 }
 
-function updateLine2(lookformajor) {
+function updateMajorLine2(lookformajor) {
   majorLine2 = []
   max2 = 0;
 
@@ -124,5 +124,5 @@ function updateLineGraph() {
   }
   
   // Call the function to render the line graph
-  updateLine1("Agricultural Economics")
+  updateMajorLine1("Agricultural Economics")
   
