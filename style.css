@@ -1,0 +1,62 @@
+.node {
+    border: solid 1px #ffffff;
+    font: 10px sans-serif;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+#treemap, #chart-area {
+    flex: 1;
+}
+
+/* Change cursor to grab when hovering over treemap rectangles */
+.node rect:hover {
+    cursor: grab;
+}
+
+/* General styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 90vh; /* Full height minus the header */
+    width: 100vw;
+    justify-content: space-between;
+}
+
+/* Treemap should take the left half of the screen */
+.half-screen {
+    width: 50%; /* Left half of the screen */
+    height: 100%;
+}
+
+/* Right half container for bar chart and line chart */
+.right-half {
+    width: 50%; /* Right half of the screen */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bar chart and line chart are each 50% of the right half */
+.quarter-screen {
+    width: 100%; /* Full width of the right half */
+    height: 50%; /* Half height of the right half */
+}
+

@@ -1,38 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduates Salary Treemap</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#">
+</head>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/cd0b0889e9.js"
-      crossorigin="anonymous"></script>
-
-    <title>Persuasive Evaluation</title>
-
-  </head>
-
-  <body>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-
-    <div class="container-fluid">
-      <div class="header">
-        <h2>Persuasive Evaluation</h2>
-      </div>
-
-      <div class="d-flex justify-content-center table-responsive-lg"></div>
-      <table class="table">
-        <tr>
-          <td class="text-center" scope="col"><a href="index.html">Home</a></td>
-          <td class="text-center" scope="col"><a href="analytical.html">Analytical</a></td>
-        </tr>
-      </table>
+<body>
+    <h2>2010 Graduates' Major and Median Salaries</h2>
+    <div class="container">
+        <!-- The left half for the treemap -->
+        <div id="treemap" class="half-screen"></div>
+        
+        <!-- The right half is now split into two sections -->
+        <div id="right-container" class="right-half">
+            <!-- Top right for the bar chart -->
+            <div id="chart-area" class="quarter-screen"></div>
+            <!-- Bottom right for the line chart -->
+            <div id="line-chart-area" class="quarter-screen"></div>
+        </div>
     </div>
-  </body>
+
+    <!-- Include the required JS libraries -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/barchart.js"></script>
+    
+</body>
+</html>
