@@ -95,7 +95,14 @@ h2 {
 }
 
 
+table {
+    text-align: center;
+    
+}
 
+td {
+    width: 50vw;
+}
 
 
 
