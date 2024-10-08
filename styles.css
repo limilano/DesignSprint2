@@ -118,7 +118,7 @@ svg {
 display: block;
 margin: auto;
 background-color: #ffffff;
-box-shadow: 2px 2px #f4f4f4;
+/* box-shadow: 2px 2px #f4f4f4; */
 }
 
 .tooltip {
@@ -151,11 +151,13 @@ fill: none;
 pointer-events: all;
 }
 
-/* Style the dots by assigning a fill and stroke */
+/* Style the dots by assigning a fill and stroke
 .dot {
-  fill: #ffab00;
-  stroke: #fff;
-}
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+} */
 
 .focus circle {
 fill: none;
