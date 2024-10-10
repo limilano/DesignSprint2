@@ -16,7 +16,7 @@ h2 {
 .container {
     display: flex;
     flex-direction: row;
-    height: 90vh; /* Full height minus the header */
+    height: 100vh; /* Full height */
     min-width: 1200px; /* Set a minimum width to prevent collapsing */
     width: 100%; /* Make the container take full width */
     justify-content: space-between;
@@ -26,7 +26,7 @@ h2 {
 /* Treemap container should take the left half of the screen */
 .half-screen {
     width: 50%; /* Left half of the screen */
-    height: 100%;
+    height: 100vh; /* Keep treemap height fixed to avoid overflow */
     overflow: visible; /* Allow overflow if treemap content is larger */
 }
 
@@ -35,16 +35,19 @@ h2 {
     width: 50%; /* Right half of the screen */
     display: flex;
     flex-direction: column;
-    overflow: visible; /* Allow overflow in right-half container */
-    padding-left: 5%;
+    padding-right: 5%;
+    height: 100vh; /* Fix height to prevent floating */
+    justify-content: flex-start; /* Align charts at the top */
+    align-items: center; /* Center align charts */
+    overflow: visible; /* Prevent inner scroll */
 }
 
 /* Bar chart and line chart are each 50% of the right half */
 .quarter-screen {
     width: 100%; /* Full width of the right half */
-    height: 50%; /* Half height of the right half */
+    height: 47%; /* Slightly increase height to reduce spacing */
     overflow: visible; /* No scroll within individual charts */
-    
+    margin-bottom: 2%; /* Reduce space between bar and line charts */
 }
 
 /* Ensure treemap and chart areas do not overlap */
@@ -53,8 +56,8 @@ h2 {
 }
 
 /* Ensure the treemap, chart, and line chart have spacing and don't overlap */
- #line-chart-area {
-    padding-top: 3%; /* Add some padding around each container */
+#treemap, #chart-area, #line-chart-area {
+    padding: 10px; /* Add some padding around each container */
 }
 
 /* Change cursor to grab when hovering over treemap rectangles */
@@ -79,11 +82,12 @@ h2 {
         flex-direction: row;
         width: 1200px; /* Set a fixed width to maintain layout */
         overflow-x: scroll; /* Enable horizontal scrolling */
+        overflow-y: scroll; /* Enable vertical scrolling for the container */
     }
 
     /* SVG containers maintain their fixed positions */
     .half-screen, .right-half {
-        width: 70%; /* Keep each half at 50% of the fixed container width */
+        width: 70%; /* Keep each half at 70% of the fixed container width */
         overflow: visible;
     }
 
@@ -93,6 +97,32 @@ h2 {
         overflow-y: auto; /* Allow vertical scrolling if necessary */
     }
 }
+
+/* Further adjustments for very narrow screens */
+@media (max-height: 700px) {
+    .container {
+        height: 140vh; /* Increase container height */
+    }
+
+    .right-half {
+        height: 140vh; /* Increase right-half container height */
+    }
+
+    .quarter-screen {
+        height: 42%; /* Reduce height of each chart to fit more content */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 table {
